@@ -5,7 +5,6 @@ import sys
 
 from edge_addons_api.client import Client, Options
 
-
 if len(sys.argv) != 7:
     print("Incorrect number of arguments given. Please check action parameters")
     sys.exit(1)
