@@ -1,0 +1,33 @@
+name: 'Your name here'
+description: 'Provide a description here'
+author: 'Your name or organization here'
+inputs:
+  product_id:
+    required: true
+    description: 'The extension product ID'
+  client_id:
+    required: true
+    description: 'The client ID' 
+  client_secret:
+    required: true
+    description: 'The client secret'
+  access_token_url:
+    required: true
+    description: 'The URL where to fetch an access token from'  
+  zip:
+    required: true
+    description: 'Path to a .zip of your addon'
+  notes:
+    required: false
+    description: 'The notes to include when uploading a new release'
+    default: 'New version'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.product_id }}
+    - ${{ inputs.client_id }}
+    - ${{ inputs.client_secret }}
+    - ${{ inputs.access_token_url }}
+    - ${{ inputs.zip }}
+    - ${{ inputs.notes }}
