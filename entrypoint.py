@@ -13,10 +13,10 @@ file_path = sys.argv[5]
 notes = sys.argv[6]
 
 options = Options(
-    product_id=os.environ["EDGE_PRODUCT_ID"],
-    client_id=os.environ["EDGE_CLIENT_ID"],
-    client_secret=os.environ["EDGE_CLIENT_SECRET"],
-    access_token_url=os.environ["EDGE_ACCESS_TOKEN_URL"],
+    product_id=product_id,
+    client_id=client_id,
+    client_secret=client_secret,
+    access_token_url=access_token_url,
 )
 
 client = Client(options)
