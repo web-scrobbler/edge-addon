@@ -2,6 +2,7 @@
 
 This action will publish your addon to the Edge Web Store.
 
+Built using the [Edge Addons API](https://github.com/inverse/python-edge-addons-api) package.
 
 ## Usage
 
