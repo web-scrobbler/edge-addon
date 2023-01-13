@@ -8,7 +8,7 @@ Built using the [Edge Addons API](https://github.com/inverse/python-edge-addons-
 
 ```yaml
 steps:
-  - uses: inverse/edge-addon-python
+  - uses: inverse/edge-addon@v1.0.1
     with:
       product_id: ${{ secrets.EDGE_PRODUCT_ID }}
       client_id: ${{ secrets.EDGE_CLIENT_ID }}
