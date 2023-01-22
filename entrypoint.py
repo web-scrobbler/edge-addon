@@ -36,7 +36,7 @@ except UploadException as e:
     print(f"Errors:")
     for error in e.errors:
         print(f"- {error['message']}")
-        
+
     sys.exit(1)
 except BaseException as e:
     print(f"failed to upload: {e}")
