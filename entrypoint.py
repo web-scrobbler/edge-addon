@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-import os
 import sys
 
 from edge_addons_api.client import Client, Options
+from edge_addons_api.exceptions import UploadException
 
 if len(sys.argv) != 7:
     print("Incorrect number of arguments given. Please check action parameters")
@@ -27,6 +27,17 @@ client = Client(options)
 
 print("Submitting addon")
 
-client.submit(file_path=file_path, notes=notes)
+try:
+    client.submit(file_path=file_path, notes=notes)
 
-print("Successfully uploaded addon")
+    print("Successfully uploaded addon")
+except UploadException as e:
+    print(f"Failed to upload: {e.status} - {e.error_code} - {e.message}")
+    print(f"Errors:")
+    for error in e.errors:
+        print(f"- {error['message']}")
+        
+    sys.exit(1)
+except BaseException as e:
+    print(f"failed to upload: {e}")
+    sys.exit(1)
