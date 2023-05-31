@@ -21,6 +21,10 @@ inputs:
     required: false
     description: 'The notes to include when uploading a new release'
     default: 'New version'
+  debug:
+    required: false
+    description: 'Whether to print debug information'
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
+import logging
 import sys
 
 from edge_addons_api.client import Client, Options
 from edge_addons_api.exceptions import UploadException
 
-if len(sys.argv) != 7:
+if len(sys.argv) != 8:
     print("Incorrect number of arguments given. Please check action parameters")
     sys.exit(1)
 
@@ -15,6 +16,11 @@ client_secret = sys.argv[3]
 access_token_url = sys.argv[4]
 file_path = sys.argv[5]
 notes = sys.argv[6]
+debug = sys.argv[7].lower() in ["true", "1"]
+
+if debug:
+    logging.getLogger().setLevel(logging.DEBUG)
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 options = Options(
     product_id=product_id,
