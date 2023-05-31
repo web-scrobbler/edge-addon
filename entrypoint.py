@@ -34,7 +34,8 @@ client = Client(options)
 print("Submitting addon")
 
 try:
-    client.submit(file_path=file_path, notes=notes)
+    operation_id = client.submit(file_path=file_path, notes=notes)
+    client.fetch_publish_status(operation_id)
 
     print("Successfully uploaded addon")
 except UploadException as e:
