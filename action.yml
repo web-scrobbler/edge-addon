@@ -35,3 +35,6 @@ runs:
     - ${{ inputs.access_token_url }}
     - ${{ inputs.zip }}
     - ${{ inputs.notes }}
+branding:
+  icon: 'book'
+  color: 'blue'
