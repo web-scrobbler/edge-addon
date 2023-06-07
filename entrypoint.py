@@ -6,7 +6,7 @@ import sys
 from edge_addons_api.client import Client, Options
 from edge_addons_api.exceptions import UploadException
 
-if len(sys.argv) != 8:
+if len(sys.argv) < 6:
     print("Incorrect number of arguments given. Please check action parameters")
     sys.exit(1)
 
