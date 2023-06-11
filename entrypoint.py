@@ -18,9 +18,14 @@ file_path = sys.argv[5]
 notes = sys.argv[6]
 debug = sys.argv[7].lower() in ["true", "1"]
 
+logger = logging.getLogger()
+handler = logging.StreamHandler(sys.stdout)
+logger.addHandler(handler)
+
 if debug:
-    logging.getLogger().setLevel(logging.DEBUG)
+    logger.setLevel(logging.DEBUG)
     logging.getLogger("urllib3").setLevel(logging.WARNING)
+
 
 options = Options(
     product_id=product_id,
