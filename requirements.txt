@@ -1,1 +1,1 @@
-edge-addons-api==0.3.3
+edge-addons-api==0.4.0
