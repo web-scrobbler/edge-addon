@@ -12,8 +12,7 @@ steps:
     with:
       product_id: ${{ secrets.EDGE_PRODUCT_ID }}
       client_id: ${{ secrets.EDGE_CLIENT_ID }}
-      client_secret: ${{ secrets.EDGE_CLIENT_SECRET }}
-      access_token_url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+      api_key: ${{ secrets.EDGE_CLIENT_SECRET }}
       zip: build/edge-addon.zip
       notes: New version upload # Could be derived from release notes
 ```
