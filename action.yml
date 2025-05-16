@@ -8,12 +8,9 @@ inputs:
   client_id:
     required: true
     description: 'The client ID'
-  client_secret:
+  api_key:
     required: true
-    description: 'The client secret'
-  access_token_url:
-    required: true
-    description: 'The URL where to fetch an access token from'
+    description: 'The API key'
   zip:
     required: true
     description: 'Path to a .zip of your addon'
@@ -31,8 +28,7 @@ runs:
   args:
     - ${{ inputs.product_id }}
     - ${{ inputs.client_id }}
-    - ${{ inputs.client_secret }}
-    - ${{ inputs.access_token_url }}
+    - ${{ inputs.api_key }}
     - ${{ inputs.zip }}
     - ${{ inputs.notes }}
     - ${{ inputs.debug }}
