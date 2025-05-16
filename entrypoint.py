@@ -12,8 +12,7 @@ if len(sys.argv) < 6:
 
 product_id = sys.argv[1]
 client_id = sys.argv[2]
-client_secret = sys.argv[3]
-access_token_url = sys.argv[4]
+api_key = sys.argv[3]
 file_path = sys.argv[5]
 notes = sys.argv[6]
 debug = sys.argv[7].lower() in ["true", "1"]
@@ -30,7 +29,7 @@ if debug:
 options = Options(
     product_id=product_id,
     client_id=client_id,
-    client_secret=client_secret,
+    api_key=api_key,
     access_token_url=access_token_url,
 )
 
