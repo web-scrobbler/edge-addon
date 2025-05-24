@@ -34,7 +34,6 @@ options = Options(
     api_key=api_key,
     retry_count=retry_count,
     sleep_seconds=sleep_seconds,
-
 )
 
 client = Client(options)
