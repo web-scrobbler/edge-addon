@@ -22,6 +22,17 @@ inputs:
     required: false
     description: 'Whether to print debug information'
     default: false
+  retry_count:
+    required: false
+    description: 'Number of times to retry the upload on failure'
+    default: 3
+    type: integer
+  sleep_seconds:
+    required: false
+    description: 'Number of seconds to wait between retries'
+    default: 5
+    type: integer
+    
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -32,6 +43,8 @@ runs:
     - ${{ inputs.zip }}
     - ${{ inputs.notes }}
     - ${{ inputs.debug }}
+    - ${{ inputs.retry_count }}
+    - ${{ inputs.sleep_seconds }}
 branding:
   icon: 'book'
   color: 'blue'
