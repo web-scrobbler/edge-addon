@@ -2,13 +2,13 @@
 
 This action will publish your addon to the Edge Web Store.
 
-Built using the [Edge Addons API](https://github.com/inverse/python-edge-addons-api) package.
+Built using the [Edge Addons API](https://github.com/web-scrobber/python-edge-addons-api) package.
 
 ## Usage
 
 ```yaml
 steps:
-  - uses: inverse/edge-addon@v1.0.1
+  - uses: web-scrobber/edge-addon@v1.0.1
     with:
       product_id: ${{ secrets.EDGE_PRODUCT_ID }}
       client_id: ${{ secrets.EDGE_CLIENT_ID }}

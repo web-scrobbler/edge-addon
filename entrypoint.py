@@ -16,6 +16,8 @@ api_key = sys.argv[3]
 file_path = sys.argv[5]
 notes = sys.argv[6]
 debug = sys.argv[7].lower() in ["true", "1"]
+retry_count = int(sys.argv[8])
+sleep_seconds = int(sys.argv[9])
 
 logger = logging.getLogger()
 handler = logging.StreamHandler(sys.stdout)
@@ -30,7 +32,8 @@ options = Options(
     product_id=product_id,
     client_id=client_id,
     api_key=api_key,
-    access_token_url=access_token_url,
+    retry_count=retry_count,
+    sleep_seconds=sleep_seconds,
 )
 
 client = Client(options)
