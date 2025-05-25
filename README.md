@@ -2,7 +2,7 @@
 
 This action will publish your addon to the Edge Web Store.
 
-Built using the [Edge Addons API](https://github.com/web-scrobber/python-edge-addons-api) package.
+Built using the [Edge Addons API](https://github.com/web-scrobbler/python-edge-addons-api) package.
 
 ## Usage
 
