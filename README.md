@@ -8,7 +8,7 @@ Built using the [Edge Addons API](https://github.com/web-scrobbler/python-edge-a
 
 ```yaml
 steps:
-  - uses: web-scrobber/edge-addon@v1.0.1
+  - uses: web-scrobbler/edge-addon@v2.0.3
     with:
       product_id: ${{ secrets.EDGE_PRODUCT_ID }}
       client_id: ${{ secrets.EDGE_CLIENT_ID }}
