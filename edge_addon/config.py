@@ -6,8 +6,6 @@ from edge_addons_api.client import Options as EdgeOptions
 
 @dataclass
 class Options:
-    """Extended Options class that includes file_path, notes, and debug."""
-
     product_id: str
     client_id: str
     api_key: str
@@ -18,7 +16,6 @@ class Options:
     sleep_seconds: int
 
     def to_edge_options(self) -> EdgeOptions:
-        """Convert to the edge-addons-api Options object."""
         return EdgeOptions(
             product_id=self.product_id,
             client_id=self.client_id,
