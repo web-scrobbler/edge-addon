@@ -1,1 +1,2 @@
 edge-addons-api==0.4.1
+pytest==7.4.0
