@@ -7,6 +7,7 @@ from edge_addons_api.client import Options as EdgeOptions
 @dataclass
 class Options:
     """Extended Options class that includes file_path, notes, and debug."""
+
     product_id: str
     client_id: str
     api_key: str
@@ -15,7 +16,7 @@ class Options:
     debug: bool
     retry_count: int
     sleep_seconds: int
-    
+
     def to_edge_options(self) -> EdgeOptions:
         """Convert to the edge-addons-api Options object."""
         return EdgeOptions(
@@ -30,7 +31,7 @@ class Options:
 def create_options() -> Options:
     """
     create Options object from system arguments.
-    
+
     Returns:
         Options object containing all configuration
     """
