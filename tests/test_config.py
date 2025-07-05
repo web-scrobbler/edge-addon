@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from .config import create_options
+from edge_addon.config import create_options
 
 
 class TestOptions(unittest.TestCase):

@@ -4,3 +4,4 @@
 # Except
 !/entrypoint.py
 !/requirements.txt
+!/edge_addon/
