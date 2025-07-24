@@ -1,13 +1,15 @@
 import unittest
 from unittest.mock import patch
+
 import yaml
+from utils import get_filepath
 
 from edge_addon.config import create_options
 
 
 class TestOptions(unittest.TestCase):
     def test_create_options_from_action_definition(self):
-        with open("action.yml") as f:
+        with open(get_filepath("action.yml")) as f:
             action = yaml.safe_load(f)
 
         inputs = action["inputs"]
@@ -27,7 +29,6 @@ class TestOptions(unittest.TestCase):
             options = create_options()
 
             for index, key in enumerate(inputs):
-                # The first arg is the script name, so we add 1
                 if key == "zip":
                     key = "file_path"
 
@@ -40,6 +41,7 @@ class TestOptions(unittest.TestCase):
                     expected_value = int(expected_value)
 
                 self.assertEqual(actual_value, expected_value)
+
     def test_create_options_valid(self):
         script_name = "script_name"
         product_id = "product_id"
