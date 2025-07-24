@@ -1,10 +1,54 @@
 import unittest
+from pathlib import Path
 from unittest.mock import patch
+
+import yaml
 
 from edge_addon.config import create_options
 
 
+def get_filepath(filename: str) -> Path:
+    current_script_path = Path(__file__).resolve()
+    project_root_dir = current_script_path.parent.parent
+    file_path = project_root_dir / filename
+
+    if not file_path.is_file():
+        raise FileNotFoundError(f"There is no file named '{filename}' at '{file_path}'")
+
+    return file_path
+
+
 class TestOptions(unittest.TestCase):
+    def test_create_options_from_action_definition(self):
+        with open(get_filepath("action.yml")) as f:
+            action = yaml.safe_load(f)
+
+        inputs = action["inputs"]
+
+        test_args = ["script_name"]
+        for key, value in inputs.items():
+            if "default" in value:
+                test_args.append(str(value["default"]))
+            else:
+                test_args.append(f"test_{key}")
+
+        with patch("sys.argv", test_args):
+            options = create_options()
+
+            for index, key in enumerate(inputs):
+                if key == "zip":
+                    key = "file_path"
+
+                actual_value = getattr(options, key)
+                expected_value = test_args[index + 1]
+
+                if isinstance(actual_value, bool):
+                    expected_value = expected_value.lower() in ["true", "1"]
+                elif isinstance(actual_value, int):
+                    expected_value = int(expected_value)
+
+                self.assertEqual(actual_value, expected_value)
+
     def test_create_options_valid(self):
         script_name = "script_name"
         product_id = "product_id"

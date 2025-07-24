@@ -21,17 +21,15 @@ inputs:
   debug:
     required: false
     description: 'Whether to print debug information'
-    default: false
+    default: 'false'
   retry_count:
     required: false
     description: 'Number of times to retry the upload on failure'
-    default: 3
-    type: integer
+    default: '3'
   sleep_seconds:
     required: false
     description: 'Number of seconds to wait between retries'
-    default: 5
-    type: integer
+    default: '5'
 
 runs:
   using: 'docker'
