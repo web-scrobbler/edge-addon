@@ -1,10 +1,45 @@
 import unittest
 from unittest.mock import patch
+import yaml
 
 from edge_addon.config import create_options
 
 
 class TestOptions(unittest.TestCase):
+    def test_create_options_from_action_definition(self):
+        with open("action.yml") as f:
+            action = yaml.safe_load(f)
+
+        inputs = action["inputs"]
+
+        test_args = ["script_name"]
+        for key, value in inputs.items():
+            if "default" in value:
+                test_args.append(str(value["default"]))
+            elif value.get("type") == "integer":
+                test_args.append("1")
+            elif key == "debug":
+                test_args.append("true")
+            else:
+                test_args.append(f"test_{key}")
+
+        with patch("sys.argv", test_args):
+            options = create_options()
+
+            for index, key in enumerate(inputs):
+                # The first arg is the script name, so we add 1
+                if key == "zip":
+                    key = "file_path"
+
+                actual_value = getattr(options, key)
+                expected_value = test_args[index + 1]
+
+                if isinstance(actual_value, bool):
+                    expected_value = expected_value.lower() == "true"
+                elif isinstance(actual_value, int):
+                    expected_value = int(expected_value)
+
+                self.assertEqual(actual_value, expected_value)
     def test_create_options_valid(self):
         script_name = "script_name"
         product_id = "product_id"
