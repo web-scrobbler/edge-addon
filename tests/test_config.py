@@ -1,10 +1,21 @@
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 import yaml
-from utils import get_filepath
 
 from edge_addon.config import create_options
+
+
+def get_filepath(filename: str) -> Path:
+    current_script_path = Path(__file__).resolve()
+    project_root_dir = current_script_path.parent.parent
+    file_path = project_root_dir / filename
+
+    if not file_path.is_file():
+        raise FileNotFoundError(f"There is no file named '{filename}' at '{file_path}'")
+
+    return file_path
 
 
 class TestOptions(unittest.TestCase):
@@ -18,10 +29,6 @@ class TestOptions(unittest.TestCase):
         for key, value in inputs.items():
             if "default" in value:
                 test_args.append(str(value["default"]))
-            elif value.get("type") == "integer":
-                test_args.append("1")
-            elif key == "debug":
-                test_args.append("true")
             else:
                 test_args.append(f"test_{key}")
 
@@ -36,7 +43,7 @@ class TestOptions(unittest.TestCase):
                 expected_value = test_args[index + 1]
 
                 if isinstance(actual_value, bool):
-                    expected_value = expected_value.lower() == "true"
+                    expected_value = expected_value.lower() in ["true", "1"]
                 elif isinstance(actual_value, int):
                     expected_value = int(expected_value)
 
