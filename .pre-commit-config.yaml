@@ -18,7 +18,7 @@ repos:
     -   id: mypy
         additional_dependencies: [types-requests, types-PyYAML]
 -   repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 'v0.12.5'
+    rev: 'v0.12.9'
     hooks:
       - id: ruff
         args:
