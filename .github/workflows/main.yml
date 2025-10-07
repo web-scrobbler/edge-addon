@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@master
     - uses: actions/setup-python@v6
       with:
-        python-version: '3.13'
+        python-version: '3.14'
     - name: Install pip dependencies
       run: pip install -r requirements-dev.txt
     - uses: pre-commit/action@v3.0.1
@@ -26,7 +26,7 @@ jobs:
     - uses: actions/checkout@master
     - uses: actions/setup-python@v6
       with:
-        python-version: '3.13'
+        python-version: '3.14'
     - name: Install pip dependencies
       run: pip install -r requirements-dev.txt
     - name: Run tests
