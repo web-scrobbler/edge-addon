@@ -148,6 +148,5 @@ class TestOptions(unittest.TestCase):
 
     def test_create_options_invalid_number_args(self):
         test_args = ["script_name", "product_id"]
-        with patch("sys.argv", test_args):
-            with self.assertRaises(SystemExit):
-                create_options()
+        with patch("sys.argv", test_args), self.assertRaises(SystemExit):
+            create_options()

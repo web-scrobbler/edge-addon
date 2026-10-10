@@ -4,6 +4,7 @@ import sys
 
 from edge_addons_api.client import Client
 from edge_addons_api.exceptions import UploadException
+from requests.exceptions import RequestException
 
 from edge_addon.config import create_options
 from edge_addon.logging_utils import setup_logging
@@ -27,6 +28,6 @@ except UploadException as e:
         print(f"- {error['message']}")
 
     sys.exit(1)
-except BaseException as e:
+except (RequestException, OSError) as e:
     print(f"failed to upload: {e}")
     sys.exit(1)
