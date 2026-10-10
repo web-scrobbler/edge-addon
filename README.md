@@ -1,6 +1,6 @@
 # Edge Addon Action
 
-[![CI](https://github.com/web-scrobbler/edge-addon-python/actions/workflows/main.yml/badge.svg)](https://github.com/web-scrobbler/edge-addon-python/actions/workflows/main.yml)
+[![CI](https://github.com/web-scrobbler/edge-addon/actions/workflows/main.yml/badge.svg)](https://github.com/web-scrobbler/edge-addon/actions/workflows/main.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENCE)
 [![Python 3.14+](https://img.shields.io/badge/python-3.14%2B-blue.svg)](https://www.python.org/)
 
